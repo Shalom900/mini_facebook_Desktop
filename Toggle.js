@@ -29,6 +29,31 @@ document.querySelectorAll('.navSelect').forEach((navItem, index) => {
 
 
 
+// Cache the homeHover elements
+const homeHoverElements = document.querySelectorAll('.homeHover');
+
+document.querySelectorAll('.navSelect').forEach((navItem, index) => {
+    navItem.addEventListener('mouseenter', function() {
+        // Hide all hr elements first
+        homeHoverElements.forEach(homeHover => {
+            homeHover.style.display = 'none';
+        });
+
+        // Display the corresponding hr element if it exists
+        const homeHover = homeHoverElements[index];
+        if (homeHover) {
+            homeHover.style.display = 'block';
+        }
+    });
+
+    // Optional: Reset the hover state when the mouse leaves
+    navItem.addEventListener('mouseleave', function() {
+        homeHoverElements.forEach(homeHover => {
+            homeHover.style.display = 'none';
+        });
+    });
+});
+
 
 
 // const navSelect = document.querySelectorAll('navSelect') 
